@@ -133,6 +133,7 @@ def threaded_connection_handler(downstream_socket):
                                         connection_tests.add_successfull_test(connection, test)
                                         logged_insecure = True
                                     insecure_data += from_client
+                                from_client = re.sub(b"Accept-Encoding: .*\r\n", b"", from_client)
                                 connection_tests.log(connection, 'client', from_client)
 
                         if from_client and not mitm and not args.instant_mitm: 
